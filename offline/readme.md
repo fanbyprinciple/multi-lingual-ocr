@@ -11,6 +11,12 @@ https://huggingface.co/transformers/model_doc/marian.html
 
 ![](marianmt.png)
 
+MarianMT for arabic:
+
+https://www.kaggle.com/fanbyprinciple/transformers-for-non-english-inputs
+
+![](non_english_transformers.png)
+
 helpful blog but code breaks: 
 
 https://towardsdatascience.com/build-your-own-machine-translation-service-with-transformers-d0709df0791b
