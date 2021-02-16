@@ -25,3 +25,11 @@ https://towardsdatascience.com/build-your-own-machine-translation-service-with-t
 
 https://huggingface.co/transformers/
 
+### Things to explore
+
+1. https://www.kaggle.com/tanulsingh077/deep-learning-for-nlp-zero-to-transformers-bert#BERT-and-Its-Implementation-on-this-Competition
+
+2. https://www.kaggle.com/anasofiauzsoy/tutorial-notebook
+
+3. going through fastai's nlp course
+
