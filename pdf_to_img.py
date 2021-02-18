@@ -3,7 +3,7 @@ import os
 
 all_files = []
 file_names = []
-for root, dirs, files in os.walk('./pdfs'):
+for root, dirs, files in os.walk('./dno_bn'):
     for f in files:
         all_files.append(os.path.join(root, f))
         file_names.append(f.split('.')[0])
@@ -19,7 +19,7 @@ for i,j  in zip(all_files, file_names):
         c = 1
         for page in images:
             image_name = j + "_page_" + str(c) + ".jpg"
-            page.save('./pdfs/extracted/'+image_name, "JPEG")
+            page.save('./dno_bn/extracted/'+image_name, "JPEG")
             c = c + 1
 
     except Exception as e:

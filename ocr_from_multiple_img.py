@@ -57,7 +57,7 @@ def match_template(image,template):
 
 all_images = []
 image_names = []
-for root, dirs, files in os.walk('./pdfs/extracted/', topdown=False):
+for root, dirs, files in os.walk('./dno_bn/extracted/', topdown=False):
     for f in files:
         all_images.append(os.path.join(root, f))
         image_names.append(f.split('.')[0])
@@ -66,46 +66,49 @@ print(all_images)
 print(image_names)
 
 for i, j in zip(all_images, image_names):
+    if(os.path.isfile("./results/" + j + ".txt")):
+        print(j, " already done.")
+        pass
+    else:
+        img = cv2.imread(i)
 
-    img = cv2.imread(i)
+        grey = get_grayscale(img)
+        grey = deskew(grey)
+        grey = thresholding(grey)
+        # canny = canny(grey) # edge detection
 
-    grey = get_grayscale(img)
-    grey = deskew(grey)
-    grey = thresholding(grey)
-    # canny = canny(grey) # edge detection
+        # screen_res = 1280, 720
+        # scale_width = screen_res[0] / grey.shape[1]
+        # scale_height = screen_res[1] / grey.shape[0]
+        # scale = min(scale_width, scale_height)
+        # window_width = int(grey.shape[1] * scale)
+        # window_height = int(grey.shape[0] * scale)
+        
+        # # to show the preprocess
+        # cv2.imshow('dst_rt', grey)
+        # cv2.waitKey(0)
+        # # cv2.destroyAllWindows()
 
-    # screen_res = 1280, 720
-    # scale_width = screen_res[0] / grey.shape[1]
-    # scale_height = screen_res[1] / grey.shape[0]
-    # scale = min(scale_width, scale_height)
-    # window_width = int(grey.shape[1] * scale)
-    # window_height = int(grey.shape[0] * scale)
-    
-    # # to show the preprocess
-    # cv2.imshow('dst_rt', grey)
-    # cv2.waitKey(0)
-    # # cv2.destroyAllWindows()
+        # Adding custom options
+        # custom_config = r'--oem 3 --psm 6 -l ben --tessdata-dir Z:\\Installs\\tesseract\\tessdata'
+        
+        custom_config = r'--oem 3 --psm 6 -l ben'
 
-    # Adding custom options
-    # custom_config = r'--oem 3 --psm 6 -l ben --tessdata-dir Z:\\Installs\\tesseract\\tessdata'
-    
-    custom_config = r'--oem 3 --psm 6 -l ben'
+        # custom_config = r'-l ara'
 
-    # custom_config = r'-l ara'
+        result = pytesseract.image_to_string(grey, config=custom_config)
+        strs = unidecode(result)
+        print(strs)
+        print(result)
 
-    result = pytesseract.image_to_string(grey, config=custom_config)
-    strs = unidecode(result)
-    print(strs)
-    print(result)
+        with open( "./results/" + j + ".txt", "w",encoding='utf-8') as file:
+            file.write( result )
 
-    with open( "./results/" + j + ".txt", "w",encoding='utf-8') as file:
-        file.write( result )
+        result = translator.translate(result, src='bn', dest='en')
 
-    result = translator.translate(result, src='bn', dest='en')
-
-    with open("./results/" + j + ".txt", "a",encoding='utf-8') as file:
-        file.write( str(result ))
+        with open("./results/" + j + ".txt", "a",encoding='utf-8') as file:
+            file.write( str(result ))
 
 
-    print(result.text)
+        print(result.text)
 

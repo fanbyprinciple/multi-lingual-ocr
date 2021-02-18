@@ -95,3 +95,16 @@ https://www.pyimagesearch.com/2020/08/03/tesseract-ocr-for-non-english-languages
 3. run ocr_from_multiple_img for convertig img to script
 
 `python3 ocr_from_multiple_img.py`
+
+
+## for offline installation
+
+Checkout the offline folder
+
+# using MarianMT
+
+1. `pip3 install transformers`
+2. `pip3 install sentencepiece`
+3. `pip3 install mosestokenizer`
+4. You also need to install pytorch in the base
+
