@@ -102,6 +102,12 @@ https://www.pyimagesearch.com/2020/08/03/tesseract-ocr-for-non-english-languages
 
 ![](./img/flaskpng)
 
+### Things to do 
+
+1. improve UI
+2. Add language detection feature
+3. Add possibility to directly convert from pdf
+4. integrate docx documents
 
 ## for offline installation
 
@@ -113,6 +119,7 @@ Checkout the offline folder
 2. `pip3 install sentencepiece`
 3. `pip3 install mosestokenizer`
 4. You also need to install pytorch in the base
+
 
 
 
