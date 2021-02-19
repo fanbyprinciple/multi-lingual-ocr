@@ -1,10 +1,14 @@
-7
-5
-22585
-55
-এ
-Translated(src=bn, dest=en, text=7
-5
-22585
-55
-A., pronunciation=[[]], extra_data="{'translat...")
+আমা ত্রাংলা
+সেও অর্থনা মলে লে নুঝিতে পারে , পৃর্থিধীতি কোথাও সে ঠিক খাপ খাতেন্ভে লা ; এটিডন্য
+আপলান অসিত ন্থন্ধ সর্বনা লজ্জিত ও ক্রলাপ্রাণী ভীতা থাকে | অথচ এই বয়সে শ্েভের
+ডন্য ক্বিষ্টিৎ অতিরিক্ত কাতত্রতা মনে ভল্মাত | এই সময়ে যানি সে কোলো সমন ব্যক্তির নিকট
+হতে স্তরে কিনা সখ্য লাভ কত্িতে পাতে তত তাত্রান্র নিকটি আত্মবিক্রীত হুইত্রা থাকে | কিন্ত
+তাহাকে ক্েত কতিতে কে সাতুস কত আঃ করান্রণ সেসি সাণরান্রণে প্রত বলিয়া ননে কত্রে | ৃ
+সুতত্রাং তাহা চেতান্রা ওন্রং ভাবখানা অলেকসি প্রভুতীন পথের নুকুনেন্ত মতো ভা যা |
+Translated(src=bn, dest=en, text=I am Trangla
+He can also understand the meaning of the mall le, the competition somewhere he just khatenve la; That's it
+Apalan asita ntandha sarvana lajjita and kralaprani fear But at this age Shaver
+Donya kvistit extra katatrata mind valmat | At this point he goes to the person who called Kolo
+There is a self-selling huitra near Tatranra as far as the level of friendship is concerned. But
+No matter how much he is called, how much he is called, how much he is called, how much he is called. ृ
+Sutatrang taha chetanra onrang bhabkhana alexi prabhutin path nukunenta like bha ya., pronunciation=[[]], extra_data="{'translat...")

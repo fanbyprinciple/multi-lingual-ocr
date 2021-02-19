@@ -55,15 +55,15 @@ def deskew(image):
 def match_template(image,template):
     return cv2.matchTemplate(image, template, cv2.TM_CCOFF_NORMED)
 
-
-def recog_image(imagename='static/bengali_text.png'):
+\
+def recog_image(imagename='static/test_bangla.png'):
 
     print(imagename)
     # imagename = 'static/bengali_text.png'
     img = cv2.imread(imagename)
 
-    img = cv2.transpose(img)
-    img = cv2.flip(img,flipCode=0)
+    # img = cv2.transpose(img)
+    # img = cv2.flip(img,flipCode=0)
 
     grey = get_grayscale(img)
     grey = deskew(grey)
@@ -79,9 +79,9 @@ def recog_image(imagename='static/bengali_text.png'):
     
     
     # to show the preprocess
-    cv2.imshow('dst_rt', grey)
-    cv2.waitKey(0)
-    cv2.destroyAllWindows()
+    # cv2.imshow('dst_rt', grey)
+    # cv2.waitKey(0)
+    # cv2.destroyAllWindows()
 
     # Adding custom options
     # custom_config = r'--oem 3 --psm 6 -l ben --tessdata-dir Z:\\Installs\\tesseract\\tessdata'
@@ -107,4 +107,4 @@ def recog_image(imagename='static/bengali_text.png'):
 
     return result.text
 
-print(recog_image('static/bengali_text.png'))
+print(recog_image())

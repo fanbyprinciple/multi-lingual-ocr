@@ -6,12 +6,12 @@ $( document ).ready(function() {
 
     function setbg(color)
     {
-    document.getElementById("styled").style.background=color
+        document.getElementById("styled").style.background=color
     }
 
     // const worker = Tesseract.create();
 
-    const defaultImage = "static/bengali_text.png"
+    const defaultImage = "static/test_bangla.png"
     //const defaultImage = 'https://tesseract.projectnaptha.com/img/eng_bw.png';
     // const defaultImage = 'https://i.redd.it/8h66m4nnyo331.jpg';
     // const defaultImage = 'https://i.imgur.com/fun6Hrl.png';
@@ -22,7 +22,7 @@ $( document ).ready(function() {
     const img = ocr.querySelector('#ocr__img');
     const output = ocr.querySelector('#ocr__output');
     const form = ocr.querySelector('#ocr__form');
-    const result = ocr.querySelector('#styled')
+    const result = ocr.querySelector('.ocr__textarea')
 
 
     input.value = defaultImage;
@@ -36,13 +36,14 @@ $( document ).ready(function() {
 
     function recognizeImage(imageUrl) {
         console.log('recognize START');
+        
         // worker.terminate();
         
         output.textContent = 'Waiting to start.';
         output.classList.remove('error');
         output.classList.add('processing');
 
-        $.post("recog",{ 'image' : imageUrl}, function(data){
+        $.post("recog",{'image':imageUrl}, function(data){
        
         }).progress(progress => {
             // console.log('progress', progress);
@@ -52,7 +53,7 @@ $( document ).ready(function() {
             // console.log('result', result);
             console.log(data['data'])
             output.classList.remove('processing');
-            output.textContent = 'got data';
+            output.textContent = 'Translation successful';
             result.textContent = data['data']
 
         }).catch(err => {

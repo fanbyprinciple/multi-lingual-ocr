@@ -11,9 +11,8 @@ def hello():
 def recog():
 
     data = request.get_data().decode("utf-8")
-    print("heres the result")
-    print(data)
-    result = recog_image(data)
+    data = data.replace("%2F", "/")
+    result = recog_image(data.split('=')[1])
     print('result for flask: ', result)
     # result = 'dummy results'
     return {'data': result}
