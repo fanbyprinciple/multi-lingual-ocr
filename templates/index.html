@@ -1,22 +1,22 @@
 
 <html>
     <head>
-        <link rel="stylesheet" href="static/index.css">
+        <link rel="stylesheet" href="./static/index.css">
         
         <!-- {{ url_for('static', filename='index.css') }}
         {{ url_for('static', filename='jquery_min.js') }}
         {{ url_for('static', filename='tesseract_min.js') }}
         {{ url_for('static', filename='index.js') }} -->
 
-        <script src="static/jquery_min.js"></script>
-        <script src="static/tesseract_min.js"></script>
+        <script src="./static/jquery_min.js"></script>
+        <!-- <script src="./static/tesseract_min.js"></script> -->
         
         <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/tesseract.js/1.0.19/tesseract.min.js"></script> -->
-        <script src="static/index.js"></script>
+        <script src="./static/index.js"></script>
     </head>
     <body>
         <div id="ocr" class="ocr">
-            <h1 class="h">OCR with Tesseract</h1>
+            <h1 class="h">OCR with OpenCV and Tesseract</h1>
             
             <form id="ocr__form" class="ocr__form">
                 <label for="ocr__input">Image: </label>
@@ -32,6 +32,10 @@
                     Waiting to start.
                 </div>
             </div>
+
+            <textarea name="styled-textarea" id="styled" onfocus="this.value=''; setbg('#e5fff3');" onblur="setbg('white')">Get results here</textarea>
+
+
         </div>
     </body>
     

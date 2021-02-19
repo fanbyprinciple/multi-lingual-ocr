@@ -8,7 +8,6 @@ import numpy as np
 import pytesseract
 from unidecode import unidecode
 
-img = cv2.imread('./Page_1.jpg')
 # img = cv2.imread('big_text.png')
 # img = cv2.imread('arabic.png')
 
@@ -57,46 +56,55 @@ def match_template(image,template):
     return cv2.matchTemplate(image, template, cv2.TM_CCOFF_NORMED)
 
 
-grey = get_grayscale(img)
-grey = deskew(grey)
-grey = thresholding(grey)
-# canny = canny(grey) # edge detection
+def recog_image(imagename='static/bengali_text.png'):
 
-screen_res = 1280, 720
-scale_width = screen_res[0] / grey.shape[1]
-scale_height = screen_res[1] / grey.shape[0]
-scale = min(scale_width, scale_height)
-window_width = int(grey.shape[1] * scale)
-window_height = int(grey.shape[0] * scale)
-i = 1
-for page in pages:
-    image_name = "Page_" + str(i) + ".jpg"
-    page.save(image_name, "JPEG")
-    i = i + 1
-# to show the preprocess
-cv2.imshow('dst_rt', grey)
-cv2.waitKey(0)
-# cv2.destroyAllWindows()
+    print(imagename)
+    # imagename = 'static/bengali_text.png'
+    img = cv2.imread(imagename)
 
-# Adding custom options
-# custom_config = r'--oem 3 --psm 6 -l ben --tessdata-dir Z:\\Installs\\tesseract\\tessdata'
-custom_config = r'--oem 3 --psm 6 -l ben'
+    img = cv2.transpose(img)
+    img = cv2.flip(img,flipCode=0)
 
-# custom_config = r'-l ara'
+    grey = get_grayscale(img)
+    grey = deskew(grey)
+    grey = thresholding(grey)
+    # canny = canny(grey) # edge detection
 
-result = pytesseract.image_to_string(grey, config=custom_config)
-strs = unidecode(result)
-print(strs)
-print(result)
+    screen_res = 1280, 720
+    scale_width = screen_res[0] / grey.shape[1]
+    scale_height = screen_res[1] / grey.shape[0]
+    scale = min(scale_width, scale_height)
+    window_width = int(grey.shape[1] * scale)
+    window_height = int(grey.shape[0] * scale)
+    
+    
+    # to show the preprocess
+    cv2.imshow('dst_rt', grey)
+    cv2.waitKey(0)
+    cv2.destroyAllWindows()
 
-with open("bengali_result.txt", "w",encoding='utf-8') as file:
-    file.write( result )
+    # Adding custom options
+    # custom_config = r'--oem 3 --psm 6 -l ben --tessdata-dir Z:\\Installs\\tesseract\\tessdata'
+    custom_config = r'--oem 3 --psm 6 -l ben'
 
-result = translator.translate(result, src='bn', dest='en')
+    # custom_config = r'-l ara'
+    result = pytesseract.image_to_string(grey, config=custom_config)
+    strs = unidecode(result)
+    
+    print(strs)
+    print(result)
 
-with open("bengali_result.txt", "a",encoding='utf-8') as file:
-    file.write( str(result ))
+    with open("image_result.txt", "w",encoding='utf-8') as file:
+        file.write( result )
+
+    result = translator.translate(result, src='bn', dest='en')
+
+    with open("image_result.txt", "a",encoding='utf-8') as file:
+        file.write( str(result ))
 
 
-print(result.text)
+    print(result.text)
 
+    return result.text
+
+print(recog_image('static/bengali_text.png'))

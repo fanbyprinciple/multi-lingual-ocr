@@ -3,7 +3,13 @@
 $( document ).ready(function() {
     console.log( "ready player one!" );
 
-    const worker = Tesseract.create();
+
+    function setbg(color)
+    {
+    document.getElementById("styled").style.background=color
+    }
+
+    // const worker = Tesseract.create();
 
     const defaultImage = "static/bengali_text.png"
     //const defaultImage = 'https://tesseract.projectnaptha.com/img/eng_bw.png';
@@ -16,6 +22,7 @@ $( document ).ready(function() {
     const img = ocr.querySelector('#ocr__img');
     const output = ocr.querySelector('#ocr__output');
     const form = ocr.querySelector('#ocr__form');
+    const result = ocr.querySelector('#styled')
 
 
     input.value = defaultImage;
@@ -27,41 +34,43 @@ $( document ).ready(function() {
         console.error(err);
     }
 
-    async function recognizeImage(image) {
+    function recognizeImage(imageUrl) {
         console.log('recognize START');
-        worker.terminate();
+        // worker.terminate();
         
         output.textContent = 'Waiting to start.';
         output.classList.remove('error');
         output.classList.add('processing');
-        
-        return worker.recognize(image)
-            .progress(progress => {
-                // console.log('progress', progress);
-                output.innerHTML = `Processing...<br>Status: ${progress.status}<br>${Math.round(progress.progress * 100)}%`;
-            }).then(result => {
-                // console.log('result', result);
 
-                output.classList.remove('processing');
-                output.textContent = result.text;
-            }).catch(err => {
-                myError(err, 'caught error');
-                output.classList.add('error');
-                output.textContent = 'Error processing image.';
-            }).finally(() => {
-                console.log('recognize END');		
-                worker.terminate();
-            });
+        $.post("recog",{ 'image' : imageUrl}, function(data){
+       
+        }).progress(progress => {
+            // console.log('progress', progress);
+            output.innerHTML = `Processing...<br>Status: ${progress.status}<br>${Math.round(progress.progress * 100)}%`;
+            console.log('inside progress')
+        }).done(function(data){
+            // console.log('result', result);
+            console.log(data['data'])
+            output.classList.remove('processing');
+            output.textContent = 'got data';
+            result.textContent = data['data']
+
+        }).catch(err => {
+            console.log('inside catch')
+            myError(err, 'caught error');
+            output.classList.add('error');
+            output.textContent = 'Error processing image.';
+        })
     }
 
-    form.onsubmit = async e => {
+    form.onsubmit = e => {
         console.log('submit START');
         e.preventDefault();
         
         const imageUrl = input.value;
         img.src = imageUrl;
         
-        await recognizeImage(imageUrl);
+        recognizeImage(imageUrl);
         
         console.log('submit END');
     }
