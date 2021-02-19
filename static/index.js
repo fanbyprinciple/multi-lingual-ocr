@@ -3,12 +3,6 @@
 $( document ).ready(function() {
     console.log( "ready player one!" );
 
-
-    function setbg(color)
-    {
-        document.getElementById("styled").style.background=color
-    }
-
     // const worker = Tesseract.create();
 
     const defaultImage = "static/test_bangla.png"

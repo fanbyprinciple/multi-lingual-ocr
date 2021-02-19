@@ -96,6 +96,12 @@ https://www.pyimagesearch.com/2020/08/03/tesseract-ocr-for-non-english-languages
 
 `python3 ocr_from_multiple_img.py`
 
+4. for using the flask server
+
+`python3 app.py`
+
+![](./img/flaskpng)
+
 
 ## for offline installation
 
@@ -107,4 +113,6 @@ Checkout the offline folder
 2. `pip3 install sentencepiece`
 3. `pip3 install mosestokenizer`
 4. You also need to install pytorch in the base
+
+
 
