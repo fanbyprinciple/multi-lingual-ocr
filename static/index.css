@@ -14,16 +14,21 @@
     color: #eee;
   }
 
-  .ocr__img {
+  #o__img {
+    position: fixed;
+    left: 200px;
+    top:250px;
     width: 600px;
     height: 500px;
     border: 3px solid #08f;
-    max-height: 100vh;
-    float: left;
-    justify-self: center;
+    /* max-height: 100vh; */
+    /* justify-self: center; */
   }
 
-  .ocr__textarea {
+  .o__textarea {
+    position:fixed;
+    left:1000px;
+    top: 250px;
     width: 600px;
     height: 500px;
     border: 3px solid #201d1d;
@@ -32,7 +37,7 @@
     /* background-image: url(bg.gif); */
     /* background-position: bottom right; */
     background-repeat: no-repeat;
-    justify-self: center;
+    /* justify-self: center; */
   }
 
   .clearfix{
@@ -74,4 +79,19 @@
   }
   .ocr__output.processing {
     color: #08f;
+  }
+  #main { 
+      width: 800px;
+      margin: 0 auto;
+  }
+  #sidebar    {
+      width: 200px;
+      height: 400px;
+      float: left;
+  }
+
+  #page-wrap  {
+      width: 600px;
+      height: 400px;
+      margin-left: 200px;
   }

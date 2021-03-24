@@ -5,7 +5,7 @@ $( document ).ready(function() {
 
     // const worker = Tesseract.create();
 
-    const defaultImage = "static/test_bangla.png"
+    const defaultImage = "./static/Refit-Docking Schedule-BNS NISHAN_page_1.jpg"
     //const defaultImage = 'https://tesseract.projectnaptha.com/img/eng_bw.png';
     // const defaultImage = 'https://i.redd.it/8h66m4nnyo331.jpg';
     // const defaultImage = 'https://i.imgur.com/fun6Hrl.png';
@@ -13,10 +13,10 @@ $( document ).ready(function() {
 
     const ocr = document.querySelector('#ocr');
     const input = ocr.querySelector('#ocr__input');
-    const img = ocr.querySelector('#ocr__img');
+    const img = ocr.querySelector('#o__img');
     const output = ocr.querySelector('#ocr__output');
     const form = ocr.querySelector('#ocr__form');
-    const result = ocr.querySelector('.ocr__textarea')
+    const result = ocr.querySelector('.o__textarea')
 
 
     input.value = defaultImage;
@@ -33,7 +33,7 @@ $( document ).ready(function() {
         
         // worker.terminate();
         
-        output.textContent = 'Waiting to start.';
+        output.textContent = 'Put the url for image and press start.';
         output.classList.remove('error');
         output.classList.add('processing');
 
@@ -47,14 +47,16 @@ $( document ).ready(function() {
             // console.log('result', result);
             console.log(data['data'])
             output.classList.remove('processing');
-            output.textContent = 'Translation successful';
+            output.textContent = 'Translation successful. Look into console for logs.';
+            // output.css("background-color", "Lime")
             result.textContent = data['data']
 
         }).catch(err => {
             console.log('inside catch')
             myError(err, 'caught error');
             output.classList.add('error');
-            output.textContent = 'Error processing image.';
+            // output.css("background-color", "Maroon")
+            output.textContent = 'Error processing image. Check python console for logs.';
         })
     }
 

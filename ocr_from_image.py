@@ -55,7 +55,6 @@ def deskew(image):
 def match_template(image,template):
     return cv2.matchTemplate(image, template, cv2.TM_CCOFF_NORMED)
 
-\
 def recog_image(imagename='static/test_bangla.png'):
 
     print(imagename)
@@ -107,4 +106,4 @@ def recog_image(imagename='static/test_bangla.png'):
 
     return result.text
 
-print(recog_image())
+# print(recog_image('/home/misthios/codeplay/multi-lingual-ocr/static/76 BMM LM no 76 dt 28 Jan 2021_page_1.jpg'))

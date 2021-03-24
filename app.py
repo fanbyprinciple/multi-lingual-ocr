@@ -12,6 +12,7 @@ def recog():
 
     data = request.get_data().decode("utf-8")
     data = data.replace("%2F", "/")
+    data = data.replace("+", " ")
     result = recog_image(data.split('=')[1])
     print('result for flask: ', result)
     # result = 'dummy results'

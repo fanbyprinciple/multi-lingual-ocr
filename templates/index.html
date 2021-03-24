@@ -15,30 +15,33 @@
         <script src="./static/index.js"></script>
     </head>
     <body>
+        
         <div id="ocr" class="ocr">
             <h1 class="h">OCR with OpenCV and Tesseract</h1>
-            <div id="ocr__result" class="ocr__result">
-                <h3 class="h">Result:</h3>
-                <div id="ocr__output" class="ocr__output">
-                    Waiting to start.
-                </div>
-            </div>
-
+            
             <form id="ocr__form" class="ocr__form">
                 <label for="ocr__input">Image: </label>
                 <input id="ocr__input" type="text" />
                 <button type="submit">Start</button>
             </form>
             
-            <img id="ocr__img" class="ocr__img" />
-
-            <textarea name="styled-textarea" class="ocr__textarea">Results are shown here</textarea>
+            <div id="ocr__result" class="ocr__result">
+                <h3 class="h">Result:</h3>
+                <div id="ocr__output" class="ocr__output">
+                    Waiting to start.
+                </div>
+            </div>
             
-            
 
             
-
-
+            <div id ="main">
+                <div id="sidebar">
+                    <img id="o__img" class="ocr__img" />
+                </div>
+                <div id="page-wrap">
+                    <textarea name="styled-textarea" class="o__textarea">Results are shown here</textarea>
+                </div>
+            </div>
         </div>
     </body>
     
