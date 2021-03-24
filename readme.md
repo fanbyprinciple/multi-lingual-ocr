@@ -2,19 +2,19 @@
 
 ## Installation in linux
 
-important link:
-https://linuxhint.com/install-tesseract-ocr-linux/
+Important link:
+`https://linuxhint.com/install-tesseract-ocr-linux/`
 
-installing pip requirements
+1. Installing pip requirements
 `pip3 install -r requirements.txt`
 
-installing in linux
+2. Installing in linux
 `sudo apt-get install tesseract-ocr`
 
-for installing all language pack use
+3. For installing all language pack use
 `apt-get install tesseract-ocr-all`
 
-for bengali use:
+4. For bengali use:
 `apt-get install tesseract-ocr-ben`
 
 Or download language pack manually from github.
@@ -27,9 +27,9 @@ Or download language pack manually from github.
 
 1. OCRopus - https://github.com/ocropus/ocropy
 
-1. Ocular - https://github.com/tberg12/ocular
+2. Ocular - https://github.com/tberg12/ocular
 
-1. https://medium.com/better-programming/beginners-guide-to-tesseract-ocr-using-python-10ecbb426c3d
+3. https://medium.com/better-programming/beginners-guide-to-tesseract-ocr-using-python-10ecbb426c3d
 
 ## google translate
 
@@ -39,17 +39,23 @@ It is working well with python
 
 ## Tesseract 4.1
 
-from : https://nanonets.com/blog/ocr-with-tesseract/
+From : `https://nanonets.com/blog/ocr-with-tesseract/`
 
 ![](./img/tesseract_cots.png)
 
-Tesseract 4.00 includes a new neural network subsystem configured as a text line recognizer. It has its origins in OCRopus' Python-based LSTM implementation but has been redesigned for Tesseract in C++. The neural network system in Tesseract pre-dates TensorFlow but is compatible with it, as there is a network description language called Variable Graph Specification Language (VGSL), that is also available for TensorFlow.
-
-To recognize an image containing a single character, we typically use a Convolutional Neural Network (CNN). Text of arbitrary length is a sequence of characters, and such problems are solved using RNNs and LSTM is a popular form of RNN. Read this post to learn more about LSTM.
+Tesseract 4.00 includes a new neural network subsystem configured as a text line recognizer.
+It has its origins in OCRopus' Python-based LSTM implementation but has been redesigned for Tesseract in C++.
+The neural network system in Tesseract pre-dates TensorFlow but is compatible with it, as there is a network description language called Variable Graph Specification Language (VGSL), that is also available for TensorFlow.
+To recognize an image containing a single character, we typically use a Convolutional Neural Network (CNN). 
+Text of arbitrary length is a sequence of characters, and such problems are solved using RNNs and LSTM is a popular form of RNN. 
+Read this post to learn more about LSTM.
 
 ![](./img/t5_preprocessed.png)
 
-LSTMs are great at learning sequences but slow down a lot when the number of states is too large. There are empirical results that suggest it is better to ask an LSTM to learn a long sequence than a short sequence of many classes. Tesseract developed from OCRopus model in Python which was a fork of a LSMT in C++, called CLSTM. CLSTM is an implementation of the LSTM recurrent neural network model in C++, using the Eigen library for numerical computations.
+LSTMs are great at learning sequences but slow down a lot when the number of states is too large. 
+There are empirical results that suggest it is better to ask an LSTM to learn a long sequence than a short sequence of many classes.
+Tesseract developed from OCRopus model in Python which was a fork of a LSMT in C++, called CLSTM. 
+CLSTM is an implementation of the LSTM recurrent neural network model in C++, using the Eigen library for numerical computations.
 
 The only language pack installed in macOS Tesseract is English, which is contained in the eng.traineddata file.
 
@@ -57,21 +63,21 @@ The only language pack installed in macOS Tesseract is English, which is contain
 
 So what are these Tesseract files?
 
-eng.traineddata is the language pack for English.
-osd.traineddata is a special data file related to orientation and scripts.
-snum.traineddata is an internal serial number used by Tesseract.
+`eng.traineddata` is the language pack for English.
+`osd.traineddata` is a special data file related to orientation and scripts.
+`snum.traineddata` is an internal serial number used by Tesseract.
 pdf.ttf is a True Type Format Font file to support pdf renderings.
 
 Got bengali text:
 ![](./img/bengali_text.png)
 
-## TODO:
+## Checklist:
 
 1. make pytesseract work - done
 
 tesseract documentation:
 
-https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc
+`https://github.com/tesseract-ocr/tesseract/blob/master/doc/tesseract.1.asc`
 
 tessseract sorted!
 
@@ -81,7 +87,7 @@ tessseract sorted!
 
 1. get boxes around text - not done
 
-https://www.pyimagesearch.com/2020/08/03/tesseract-ocr-for-non-english-languages/
+`https://www.pyimagesearch.com/2020/08/03/tesseract-ocr-for-non-english-languages/`
 
 
 ## To run
@@ -102,7 +108,7 @@ https://www.pyimagesearch.com/2020/08/03/tesseract-ocr-for-non-english-languages
 
 ![](./img/flaskpng)
 
-### Things to do 
+## Things to do 
 
 1. improve UI
 2. Add language detection feature
@@ -119,7 +125,4 @@ Checkout the offline folder
 2. `pip3 install sentencepiece`
 3. `pip3 install mosestokenizer`
 4. You also need to install pytorch in the base
-
-
-
 
