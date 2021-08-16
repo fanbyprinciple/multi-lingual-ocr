@@ -55,9 +55,11 @@ def deskew(image):
 def match_template(image,template):
     return cv2.matchTemplate(image, template, cv2.TM_CCOFF_NORMED)
 
+image_dir = "./test/"
+
 all_images = []
 image_names = []
-for root, dirs, files in os.walk('./dno_bn/extracted/', topdown=False):
+for root, dirs, files in os.walk(image_dir , topdown=False):
     for f in files:
         all_images.append(os.path.join(root, f))
         image_names.append(f.split('.')[0])
@@ -103,7 +105,7 @@ for i, j in zip(all_images, image_names):
 
         with open( "./results/" + j + ".txt", "w",encoding='utf-8') as file:
             file.write( result )
-
+        src
         result = translator.translate(result, src='bn', dest='en')
 
         with open("./results/" + j + ".txt", "a",encoding='utf-8') as file:

@@ -3,12 +3,6 @@
 $( document ).ready(function() {
     console.log( "ready player one!" );
 
-
-    function setbg(color)
-    {
-    document.getElementById("styled").style.background=color
-    }
-
     // const worker = Tesseract.create();
 
     const defaultImage = "static/test_bangla.png"
@@ -19,10 +13,10 @@ $( document ).ready(function() {
 
     const ocr = document.querySelector('#ocr');
     const input = ocr.querySelector('#ocr__input');
-    const img = ocr.querySelector('#ocr__img');
+    const img = ocr.querySelector('#o__img');
     const output = ocr.querySelector('#ocr__output');
     const form = ocr.querySelector('#ocr__form');
-    const result = ocr.querySelector('#styled')
+    const result = ocr.querySelector('.o__textarea')
 
 
     input.value = defaultImage;
@@ -36,13 +30,14 @@ $( document ).ready(function() {
 
     function recognizeImage(imageUrl) {
         console.log('recognize START');
+        
         // worker.terminate();
         
-        output.textContent = 'Waiting to start.';
+        output.textContent = 'Put the url for image and press start.';
         output.classList.remove('error');
         output.classList.add('processing');
 
-        $.post("recog",{ 'image' : imageUrl}, function(data){
+        $.post("recog",{'image':imageUrl}, function(data){
        
         }).progress(progress => {
             // console.log('progress', progress);
@@ -52,14 +47,16 @@ $( document ).ready(function() {
             // console.log('result', result);
             console.log(data['data'])
             output.classList.remove('processing');
-            output.textContent = 'got data';
+            output.textContent = 'Translation successful. Look into console for logs.';
+            // output.css("background-color", "Lime")
             result.textContent = data['data']
 
         }).catch(err => {
             console.log('inside catch')
             myError(err, 'caught error');
             output.classList.add('error');
-            output.textContent = 'Error processing image.';
+            // output.css("background-color", "Maroon")
+            output.textContent = 'Error processing image. Check python console for logs.';
         })
     }
 
