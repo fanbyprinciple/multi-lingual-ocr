@@ -10,8 +10,8 @@ for i in lang_avail:
 
 translator = Translator()
 
-f = open('bengali_result.txt', 'r')
-input_text = f.read()
+# f = open('bengali_result.txt', 'r')
+# input_text = f.read()
 
 
 result = translator.translate('আপনি কেমন আছেন', src='bn', dest='en')

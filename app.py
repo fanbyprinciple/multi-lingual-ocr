@@ -1,6 +1,7 @@
 # To be expanded to cover the OCR
 from flask import Flask, render_template,request
-from ocr_from_image import *
+from ocr_from_image_module import *
+from urllib.parse import unquote
 
 app = Flask(__name__)
 @app.route("/")
@@ -11,9 +12,10 @@ def hello():
 def recog():
 
     data = request.get_data().decode("utf-8")
-    print("heres the result")
-    print(data)
-    result = recog_image(data)
+    print("I got this from html")
+    d = unquote(data.split('=')[1])
+    print(unquote(data.split('=')[1]))
+    result = recog_image(d)
     print('result for flask: ', result)
     # result = 'dummy results'
     return {'data': result}

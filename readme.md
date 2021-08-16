@@ -1,3 +1,15 @@
+# General Readme
+
+1. install pytessearct
+2. cv2
+3. transformers
+4. unidecode
+5. googletrans
+
+offline using marianmt: 
+
+![](offline_works.png)
+
 # OCR application
 
 ## Installation in linux

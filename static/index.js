@@ -11,7 +11,7 @@ $( document ).ready(function() {
 
     // const worker = Tesseract.create();
 
-    const defaultImage = "static/bengali_text.png"
+    const defaultImage = "static/test_bangla.png"
     //const defaultImage = 'https://tesseract.projectnaptha.com/img/eng_bw.png';
     // const defaultImage = 'https://i.redd.it/8h66m4nnyo331.jpg';
     // const defaultImage = 'https://i.imgur.com/fun6Hrl.png';
@@ -64,12 +64,14 @@ $( document ).ready(function() {
     }
 
     form.onsubmit = e => {
-        console.log('submit START');
+        console.log('submit START ');
         e.preventDefault();
         
         const imageUrl = input.value;
         img.src = imageUrl;
         
+        console.log(imageURL)
+
         recognizeImage(imageUrl);
         
         console.log('submit END');

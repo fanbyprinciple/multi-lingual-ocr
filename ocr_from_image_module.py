@@ -1,7 +1,13 @@
-import googletrans
-from googletrans import Translator
+from transformers import MarianTokenizer, MarianMTModel
 
-translator = Translator()
+src='bn'
+dst='en'
+
+model_name = f'Helsinki-NLP/opus-mt-{src}-{dst}'
+model = MarianMTModel.from_pretrained(model_name)
+
+print(f"Model loaded {model_name}")
+tokenizer = MarianTokenizer.from_pretrained(model_name)
 
 import cv2
 import numpy as np 
@@ -54,7 +60,7 @@ def match_template(image,template):
     return cv2.matchTemplate(image, template, cv2.TM_CCOFF_NORMED)
 
 
-def recog_image(imagename='static/bengali_text.png'):
+def recog_image(imagename='./img/test_bangla.png'):
 
     print(imagename)
     # imagename = 'static/bengali_text.png'
@@ -92,17 +98,19 @@ def recog_image(imagename='static/bengali_text.png'):
     print("Raw pytesseract: " , result)
     print("The string: " , strs)
 
-    with open("image_result.txt", "w",encoding='utf-8') as file:
-        file.write( result )
+    # with open("image_result.txt", "w",encoding='utf-8') as file:
+    #     file.write( result )
 
-    result = translator.translate(result, src='bn', dest='en')
+    batch = tokenizer([result], return_tensors="pt")
+    gen = model.generate(**batch)
+    result = tokenizer.batch_decode(gen,skip_special_tokens=True)
 
     with open("image_result.txt", "a",encoding='utf-8') as file:
         file.write( str(result ))
 
 
-    print("Final transform: ", result.text)
+    print("Final transform: ", result)
 
-    return result.text
+    return result
 
-print(recog_image('static/bengali_text.png'))
+# print(recog_image())
