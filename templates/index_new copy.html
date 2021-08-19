@@ -1,4 +1,3 @@
-	
 
 <html>
     <head>
@@ -16,32 +15,31 @@
         <script src="./static/index.js"></script>
     </head>
     <body>
-            <div id="ocr" class="ocr">
-            <h1 class="h">Optical character recognition with hugging face transformer</h1>
-                        
-            <form id="ocr__form" class="ocr__form">
-            <label for="ocr__input">Image: </label>
-            <input id="ocr__input" type="text" />
-            <button type="submit">Start</button>
+        
+        <div id="ocr" class="ocr">
+            <h1 class="h">OCR with OpenCV and Tesseract</h1>
             
+            <form id="ocr__form" class="ocr__form">
+                <label for="ocr__input">Image: </label>
+                <input id="ocr__input" type="text" />
+                <button type="submit">Start</button>
             </form>
-                        
+            
             <div id="ocr__result" class="ocr__result">
-                <h3 class="h">STATUS</h3>
+                <h3 class="h">Result:</h3>
                 <div id="ocr__output" class="ocr__output">
                     Waiting to start.
                 </div>
+            </div>
+            <div id ="main">
+                <div id="sidebar">
+                    <img id="o__img" class="ocr__img" />
                 </div>
-                <div id ="main">
-                    <div id="sidebar">
-                        <img id="o__img" class="ocr__img" />
-                    </div>
-                    <div id="page-wrap">
-                        <textarea name="styled-textarea" class="o__textarea">Results are shown here</textarea>
-                    </div>
+                <div id="page-wrap">
+                    <textarea name="styled-textarea" class="o__textarea">Results are shown here</textarea>
                 </div>
             </div>
-        
+        </div>
     </body>
     
 </html>

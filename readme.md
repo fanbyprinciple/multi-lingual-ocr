@@ -1,16 +1,22 @@
 # General Readme
 
-1. install pytessearct
+1. install pytessearct, tesseract-ocr
 2. cv2
 3. transformers
 4. unidecode
-5. googletrans
-
+5. googletrans=4.0
+6. flask
+7. sentencepiece
+8. tesseract-ocr-ben
 offline using marianmt: 
 
 ![](offline_works.png)
 
+Marianmt not available.
+
 # OCR application
+
+`HF_DATASETS_OFFLINE=1 TRANSFORMERS_OFFLINE=1 python3 ocr_from_image_marianmt.py`
 
 ## Installation in linux
 

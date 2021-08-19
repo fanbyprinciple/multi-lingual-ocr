@@ -1,3 +1,10 @@
 pdfs
 results
 dno_bn
+Bengali.traineddata
+*.csv
+results_offline
+new
+offline
+*.ipynb
+looking_at_csv.ipynb

@@ -1,15 +1,9 @@
-from transformers import MarianTokenizer, MarianMTModel
-
-src='bn'
-dst='en'
-
-model_name = f'Helsinki-NLP/opus-mt-{src}-{dst}'
-model = MarianMTModel.from_pretrained(model_name)
-
-print(f"Model loaded {model_name}")
-tokenizer = MarianTokenizer.from_pretrained(model_name)
-
+import googletrans
+from googletrans import Translator
 import os
+
+translator = Translator()
+
 import cv2
 import numpy as np 
 import pytesseract
@@ -70,17 +64,16 @@ for root, dirs, files in os.walk(image_dir , topdown=False):
         all_images.append(os.path.join(root, f))
         image_names.append(f.split('.')[0])
 
-# print(all_images)
-# print(image_names)
+print(all_images)
+print(image_names)
 
 for i, j in zip(all_images, image_names):
-    if(os.path.isfile("./results_offline/" + j + ".txt")):
-        print(j , " already done.")
+    if(os.path.isfile("./results/" + j + ".txt")):
+        print(j, " already done.")
         pass
     else:
-        # print(i)
         img = cv2.imread(i)
-        # print(img)
+
         grey = get_grayscale(img)
         grey = deskew(grey)
         grey = thresholding(grey)
@@ -110,18 +103,15 @@ for i, j in zip(all_images, image_names):
         # print(strs)
         # print(result)
 
-        # with open( "./results_offline/" + j + ".txt", "w",encoding='utf-8') as file:
+        # with open( "./results/" + j + ".txt", "w",encoding='utf-8') as file:
         #     file.write( result )
-        try:
-            batch = tokenizer([result], return_tensors="pt")
-            gen = model.generate(**batch)
-            result = tokenizer.batch_decode(gen,skip_special_tokens=True)
-        
-            with open("./results_offline/" + j + ".txt", "a",encoding='utf-8') as file:
-                file.write( str(result))
-        except Exception as e:
-            with open("./results_offline/" + j + ".txt", "a",encoding='utf-8') as file:
-                file.write( str(e))
+        with open("./results/" + j + ".txt", "a",encoding='utf-8') as file:
+            try:    
+                result = translator.translate(result, src='bn', dest='en')
+                file.write( str(result.text))
+            except Exception as e:
+                print(e)
+                file.write(str(e))
 
-        print(result)
+        # print(result)
 
